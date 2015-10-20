@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="es.vass.demo.service.service.HeroLocalService" class="es.vass.demo.service.service.impl.HeroLocalServiceImpl" />
+	<bean id="es.vass.demo.service.service.HeroService" class="es.vass.demo.service.service.impl.HeroServiceImpl" />
+	<bean id="es.vass.demo.service.service.persistence.HeroPersistence" class="es.vass.demo.service.service.persistence.HeroPersistenceImpl" parent="basePersistence" />
+</beans>
