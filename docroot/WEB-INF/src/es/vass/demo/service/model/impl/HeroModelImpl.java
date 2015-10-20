@@ -26,7 +26,6 @@ import com.liferay.portal.model.CacheModel;
 import com.liferay.portal.model.impl.BaseModelImpl;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.util.PortalUtil;
-
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
 
@@ -35,9 +34,7 @@ import es.vass.demo.service.model.HeroModel;
 import es.vass.demo.service.model.HeroSoap;
 
 import java.io.Serializable;
-
 import java.sql.Types;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;

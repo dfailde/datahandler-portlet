@@ -77,28 +77,39 @@ public class HeroStagedModelDataHandler extends
 	@Override
 	protected void doImportStagedModel(PortletDataContext portletDataContext,
 			Hero hero) throws Exception {
-		ServiceContext serviceContext = portletDataContext.createServiceContext(hero);
-		
+		ServiceContext serviceContext = portletDataContext
+				.createServiceContext(hero);
+
 		Hero importedEntry = null;
 		Long fileEntryId = null;
-		
+
 		if (Validator.isNotNull(hero.getImageId())) {
-			StagedModelDataHandlerUtil.importReferenceStagedModel(portletDataContext, hero, FileEntry.class, hero.getImageId());
-			Map<Long, Long> fileEntryIds = (Map<Long, Long>) portletDataContext.getNewPrimaryKeysMap(FileEntry.class);
-			fileEntryId = MapUtil.getLong(fileEntryIds, hero.getImageId(), hero.getImageId());
+			StagedModelDataHandlerUtil.importReferenceStagedModel(
+					portletDataContext, hero, FileEntry.class,
+					hero.getImageId());
+			Map<Long, Long> fileEntryIds = (Map<Long, Long>) portletDataContext
+					.getNewPrimaryKeysMap(FileEntry.class);
+			fileEntryId = MapUtil.getLong(fileEntryIds, hero.getImageId(),
+					hero.getImageId());
 		}
 		if (portletDataContext.isDataStrategyMirror()) {
-			Hero existingEntry = HeroLocalServiceUtil.fetchHeroByUuidAndGroupId(hero.getUuid(),portletDataContext.getScopeGroupId());
+			Hero existingEntry = HeroLocalServiceUtil
+					.fetchHeroByUuidAndGroupId(hero.getUuid(),
+							portletDataContext.getScopeGroupId());
 			if (existingEntry == null) {
 				serviceContext.setUuid(hero.getUuid());
 				importedEntry = createNewHero(portletDataContext, hero);
-				importedEntry.setImageId(fileEntryId);
+				if (fileEntryId != null) {
+					importedEntry.setImageId(fileEntryId);
+				}
 				importedEntry = HeroLocalServiceUtil.addHero(importedEntry);
 			} else {
 				existingEntry.setUuid(hero.getUuid());
 				existingEntry.setName(hero.getName());
 				existingEntry.setDescription(hero.getDescription());
-				existingEntry.setImageId(fileEntryId);
+				if (fileEntryId != null) {
+					existingEntry.setImageId(fileEntryId);
+				}
 				existingEntry.setModifiedDate(new Date());
 				existingEntry.setUserId(hero.getUserId());
 				existingEntry.setUserName(hero.getUserName());
@@ -106,7 +117,9 @@ public class HeroStagedModelDataHandler extends
 			}
 		} else {
 			importedEntry = createNewHero(portletDataContext, hero);
-			importedEntry.setImageId(fileEntryId);
+			if (fileEntryId != null) {
+				importedEntry.setImageId(fileEntryId);
+			}
 			importedEntry = HeroLocalServiceUtil.addHero(importedEntry);
 
 		}

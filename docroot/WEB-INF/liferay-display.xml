@@ -3,7 +3,7 @@
 
 <display>
 	<category name="category.sample">
-		<portlet id="datahandler" />
+		<portlet id="list-data-handler" />
 		<portlet id="data-handler-demo"></portlet>
 	</category>
 </display>

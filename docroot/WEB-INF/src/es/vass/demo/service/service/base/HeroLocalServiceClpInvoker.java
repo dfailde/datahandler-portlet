@@ -124,13 +124,21 @@ public class HeroLocalServiceClpInvoker {
 
 		_methodParameterTypes39 = new String[] { "java.lang.String" };
 
-		_methodName44 = "getHerosByGroupId";
+		_methodName44 = "findByGroupId";
 
 		_methodParameterTypes44 = new String[] { "long" };
 
-		_methodName45 = "removeAll";
+		_methodName45 = "findByGroupId";
 
-		_methodParameterTypes45 = new String[] { "long" };
+		_methodParameterTypes45 = new String[] { "long", "int", "int" };
+
+		_methodName46 = "countByGroupId";
+
+		_methodParameterTypes46 = new String[] { "long" };
+
+		_methodName47 = "removeAll";
+
+		_methodParameterTypes47 = new String[] { "long" };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -260,11 +268,23 @@ public class HeroLocalServiceClpInvoker {
 
 		if (_methodName44.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes44, parameterTypes)) {
-			return HeroLocalServiceUtil.getHerosByGroupId(((Long)arguments[0]).longValue());
+			return HeroLocalServiceUtil.findByGroupId(((Long)arguments[0]).longValue());
 		}
 
 		if (_methodName45.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes45, parameterTypes)) {
+			return HeroLocalServiceUtil.findByGroupId(((Long)arguments[0]).longValue(),
+				((Integer)arguments[1]).intValue(),
+				((Integer)arguments[2]).intValue());
+		}
+
+		if (_methodName46.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
+			return HeroLocalServiceUtil.countByGroupId(((Long)arguments[0]).longValue());
+		}
+
+		if (_methodName47.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
 			HeroLocalServiceUtil.removeAll(((Long)arguments[0]).longValue());
 
 			return null;
@@ -321,4 +341,8 @@ public class HeroLocalServiceClpInvoker {
 	private String[] _methodParameterTypes44;
 	private String _methodName45;
 	private String[] _methodParameterTypes45;
+	private String _methodName46;
+	private String[] _methodParameterTypes46;
+	private String _methodName47;
+	private String[] _methodParameterTypes47;
 }

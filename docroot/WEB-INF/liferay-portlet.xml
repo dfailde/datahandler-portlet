@@ -5,21 +5,18 @@
 	<portlet>
 		<portlet-name>list-data-handler</portlet-name>
 		<icon>/icon.png</icon>
-		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>data-handler-portlet</css-class-wrapper>
 	</portlet>
 	<portlet>
 		<portlet-name>data-handler-demo</portlet-name>
 		<icon>/icon.png</icon>
+		<configuration-action-class>com.liferay.portal.kernel.portlet.DefaultConfigurationAction</configuration-action-class>
 		<portlet-data-handler-class>es.vass.demo.portlet.lar.DemoPortletDataHandler</portlet-data-handler-class>
 		<staged-model-data-handler-class>es.vass.demo.portlet.lar.HeroStagedModelDataHandler</staged-model-data-handler-class>
-		<staged-model-data-handler-class>es.vass.demo.portlet.lar.Sample1StagedModelDataHandler</staged-model-data-handler-class>
-		<staged-model-data-handler-class>...</staged-model-data-handler-class>
-		<header-portlet-css>/css/main.css</header-portlet-css>
-		<footer-portlet-javascript>
-			/js/main.js
-		</footer-portlet-javascript>
+		<control-panel-entry-category>
+			site_administration.content
+		</control-panel-entry-category>
+		<control-panel-entry-weight>3.10</control-panel-entry-weight>
 		<css-class-wrapper>data-handler-demo-portlet</css-class-wrapper>
 	</portlet>
 	<role-mapper>

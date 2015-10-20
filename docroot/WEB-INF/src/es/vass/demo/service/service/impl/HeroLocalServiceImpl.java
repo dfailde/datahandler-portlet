@@ -14,7 +14,10 @@
 
 package es.vass.demo.service.service.impl;
 
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.SystemEventConstants;
+import com.liferay.portal.service.SystemEventLocalServiceUtil;
 
 import es.vass.demo.service.model.Hero;
 import es.vass.demo.service.service.base.HeroLocalServiceBaseImpl;
@@ -49,13 +52,47 @@ public class HeroLocalServiceImpl extends HeroLocalServiceBaseImpl {
 	 */
 
 	@Override
-	public Collection<Hero> getHerosByGroupId(long groupId) throws SystemException{
+	public Collection<Hero> findByGroupId(long groupId) throws SystemException {
 		return heroPersistence.findByGroupId(groupId);
 	}
-	
+
 	@Override
-	public void removeAll(long groupId) throws SystemException{
+	public Collection<Hero> findByGroupId(long groupId, int start, int end)
+			throws SystemException {
+		return heroPersistence.findByGroupId(groupId, start, end);
+	}
+
+	@Override
+	public int countByGroupId(long groupId) throws SystemException {
+		return heroPersistence.countByGroupId(groupId);
+	}
+
+	@Override
+	public void removeAll(long groupId) throws SystemException {
 		heroPersistence.removeByGroupId(groupId);
 	}
 
+	@Override
+	public Hero deleteHero(Hero hero) throws SystemException {
+		try {
+			addSystemEvent(hero);
+		} catch (PortalException e) {
+		}
+		return super.deleteHero(hero);
+	}
+
+	@Override
+	public Hero deleteHero(long heroId) throws PortalException, SystemException {
+		Hero hero = getHero(heroId);
+		addSystemEvent(hero);
+		return super.deleteHero(heroId);
+	}
+
+	private void addSystemEvent(Hero deleteHero) throws SystemException,
+			PortalException {
+		SystemEventLocalServiceUtil.addSystemEvent(deleteHero.getUserId(),
+				deleteHero.getGroupId(), Hero.class.getName(),
+				deleteHero.getHeroId(), deleteHero.getUuid(), null,
+				SystemEventConstants.TYPE_DELETE, null);
+	}
 }

@@ -124,13 +124,21 @@ public class HeroLocalServiceClp implements HeroLocalService {
 
 		_methodParameterTypes21 = new String[] { "java.lang.String" };
 
-		_methodName23 = "getHerosByGroupId";
+		_methodName23 = "findByGroupId";
 
 		_methodParameterTypes23 = new String[] { "long" };
 
-		_methodName24 = "removeAll";
+		_methodName24 = "findByGroupId";
 
-		_methodParameterTypes24 = new String[] { "long" };
+		_methodParameterTypes24 = new String[] { "long", "int", "int" };
+
+		_methodName25 = "countByGroupId";
+
+		_methodParameterTypes25 = new String[] { "long" };
+
+		_methodName26 = "removeAll";
+
+		_methodParameterTypes26 = new String[] { "long" };
 	}
 
 	@Override
@@ -809,7 +817,7 @@ public class HeroLocalServiceClp implements HeroLocalService {
 	}
 
 	@Override
-	public java.util.Collection<es.vass.demo.service.model.Hero> getHerosByGroupId(
+	public java.util.Collection<es.vass.demo.service.model.Hero> findByGroupId(
 		long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		Object returnObj = null;
@@ -838,11 +846,69 @@ public class HeroLocalServiceClp implements HeroLocalService {
 	}
 
 	@Override
+	public java.util.Collection<es.vass.demo.service.model.Hero> findByGroupId(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName24,
+					_methodParameterTypes24,
+					new Object[] { groupId, start, end });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return (java.util.Collection<es.vass.demo.service.model.Hero>)ClpSerializer.translateOutput(returnObj);
+	}
+
+	@Override
+	public int countByGroupId(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		Object returnObj = null;
+
+		try {
+			returnObj = _invokableLocalService.invokeMethod(_methodName25,
+					_methodParameterTypes25, new Object[] { groupId });
+		}
+		catch (Throwable t) {
+			t = ClpSerializer.translateThrowable(t);
+
+			if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+				throw (com.liferay.portal.kernel.exception.SystemException)t;
+			}
+
+			if (t instanceof RuntimeException) {
+				throw (RuntimeException)t;
+			}
+			else {
+				throw new RuntimeException(t.getClass().getName() +
+					" is not a valid exception");
+			}
+		}
+
+		return ((Integer)returnObj).intValue();
+	}
+
+	@Override
 	public void removeAll(long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		try {
-			_invokableLocalService.invokeMethod(_methodName24,
-				_methodParameterTypes24, new Object[] { groupId });
+			_invokableLocalService.invokeMethod(_methodName26,
+				_methodParameterTypes26, new Object[] { groupId });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -910,4 +976,8 @@ public class HeroLocalServiceClp implements HeroLocalService {
 	private String[] _methodParameterTypes23;
 	private String _methodName24;
 	private String[] _methodParameterTypes24;
+	private String _methodName25;
+	private String[] _methodParameterTypes25;
+	private String _methodName26;
+	private String[] _methodParameterTypes26;
 }

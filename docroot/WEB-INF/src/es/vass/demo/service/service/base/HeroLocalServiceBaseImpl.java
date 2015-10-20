@@ -36,7 +36,6 @@ import es.vass.demo.service.service.HeroLocalService;
 import es.vass.demo.service.service.persistence.HeroPersistence;
 
 import java.io.Serializable;
-
 import java.util.List;
 
 import javax.sql.DataSource;

@@ -305,9 +305,15 @@ public interface HeroLocalService extends BaseLocalService, InvokableLocalServic
 		java.lang.String[] parameterTypes, java.lang.Object[] arguments)
 		throws java.lang.Throwable;
 
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public java.util.Collection<es.vass.demo.service.model.Hero> getHerosByGroupId(
+	public java.util.Collection<es.vass.demo.service.model.Hero> findByGroupId(
 		long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.Collection<es.vass.demo.service.model.Hero> findByGroupId(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByGroupId(long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	public void removeAll(long groupId)

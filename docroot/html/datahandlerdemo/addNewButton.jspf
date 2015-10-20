@@ -1,0 +1,7 @@
+<div class="control-group">
+	<div class="controls">
+		<a href="${addNewURL}" class="btn btn-primary"> 
+			<i class="icon-plus-sign icon-white"></i>&nbsp;Añadir Nuevo
+		</a>
+	</div>
+</div>

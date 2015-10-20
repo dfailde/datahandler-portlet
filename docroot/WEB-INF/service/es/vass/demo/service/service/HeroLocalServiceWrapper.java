@@ -344,10 +344,23 @@ public class HeroLocalServiceWrapper implements HeroLocalService,
 	}
 
 	@Override
-	public java.util.Collection<es.vass.demo.service.model.Hero> getHerosByGroupId(
+	public java.util.Collection<es.vass.demo.service.model.Hero> findByGroupId(
 		long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return _heroLocalService.getHerosByGroupId(groupId);
+		return _heroLocalService.findByGroupId(groupId);
+	}
+
+	@Override
+	public java.util.Collection<es.vass.demo.service.model.Hero> findByGroupId(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _heroLocalService.findByGroupId(groupId, start, end);
+	}
+
+	@Override
+	public int countByGroupId(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _heroLocalService.countByGroupId(groupId);
 	}
 
 	@Override

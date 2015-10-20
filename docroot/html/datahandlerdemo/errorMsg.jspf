@@ -1,0 +1,5 @@
+<c:if test="${not empty errorMsg}">
+    <div class="alert">
+      <strong><liferay-ui:message key="warning" /></strong>&nbsp;<liferay-ui:message key="${errorMsg}" />
+    </div>
+</c:if>

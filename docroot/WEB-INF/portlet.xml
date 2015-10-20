@@ -4,7 +4,7 @@
 	<portlet>
 		<portlet-name>list-data-handler</portlet-name>
 		<display-name>ListDatahandler</display-name>
-		<portlet-class>es.vass.demo.ListDataHandler</portlet-class>
+		<portlet-class>es.vass.demo.portlet.ListDataHandler</portlet-class>
 		<init-param>
 			<name>view-template</name>
 			<value>/html/listdatahandler/view.jsp</value>
@@ -34,15 +34,32 @@
 	<portlet>
 		<portlet-name>data-handler-demo</portlet-name>
 		<display-name>Data Handler Demo</display-name>
-		<portlet-class>es.vass.demo.DataHandlerDemo</portlet-class>
+		<portlet-class>es.vass.demo.portlet.DataHandlerDemo</portlet-class>
 		<init-param>
 			<name>view-template</name>
 			<value>/html/datahandlerdemo/view.jsp</value>
+		</init-param>
+		<init-param>
+			<name>config-template</name>
+			<value>/html/datahandlerdemo/configuration.jsp</value>
+		</init-param>
+		<init-param>
+			<name>list-view</name>
+			<value>/html/datahandlerdemo/listView.jsp</value>
+		</init-param>
+		<init-param>
+			<name>create-view</name>
+			<value>/html/datahandlerdemo/createView.jsp</value>
+		</init-param>
+		<init-param>
+			<name>edit-view</name>
+			<value>/html/datahandlerdemo/editView.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
+			<portlet-mode>config</portlet-mode>
 		</supports>
 		<portlet-info>
 			<title>Data Handler Demo</title>

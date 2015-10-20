@@ -331,10 +331,21 @@ public class HeroLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
-	public static java.util.Collection<es.vass.demo.service.model.Hero> getHerosByGroupId(
+	public static java.util.Collection<es.vass.demo.service.model.Hero> findByGroupId(
 		long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().getHerosByGroupId(groupId);
+		return getService().findByGroupId(groupId);
+	}
+
+	public static java.util.Collection<es.vass.demo.service.model.Hero> findByGroupId(
+		long groupId, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().findByGroupId(groupId, start, end);
+	}
+
+	public static int countByGroupId(long groupId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().countByGroupId(groupId);
 	}
 
 	public static void removeAll(long groupId)
